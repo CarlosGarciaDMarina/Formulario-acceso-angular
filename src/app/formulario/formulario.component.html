@@ -1,0 +1,99 @@
+<div class="formulario-container">
+  <h1>Formulario Personal</h1>
+  <form [formGroup]="formularioPersonal" (ngSubmit)="onSubmit()" novalidate>
+    
+    <!-- Nombre -->
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input
+        id="nombre"
+        type="text"
+        formControlName="nombre"
+        [class.invalid]="f['nombre'].invalid && f['nombre'].touched"
+        placeholder="Tu nombre"
+      />
+      <small *ngIf="f['nombre'].errors?.['required']" class="error">
+        El nombre es obligatorio.
+      </small>
+      <small *ngIf="f['nombre'].errors?.['minlength']" class="error">
+        Mínimo {{ f['nombre'].errors?.['minlength'].requiredLength }} caracteres.
+      </small>
+    </div>
+
+    <!-- Nacionalidad -->
+    <div class="form-group">
+      <label for="nacionalidad">Nacionalidad</label>
+      <input
+        id="nacionalidad"
+        type="text"
+        formControlName="nacionalidad"
+        [class.invalid]="f['nacionalidad'].invalid && f['nacionalidad'].touched"
+        placeholder="Tu nacionalidad"
+      />
+      <small *ngIf="f['nacionalidad'].errors?.['required']" class="error">
+        La nacionalidad es obligatoria.
+      </small>
+    </div>
+
+    <!-- Altura -->
+    <div class="form-group">
+      <label for="altura">Altura (cm)</label>
+      <input
+        id="altura"
+        type="number"
+        formControlName="altura"
+        [class.invalid]="f['altura'].invalid && f['altura'].touched"
+        placeholder="Ej. 180"
+      />
+      <small *ngIf="f['altura'].errors?.['required']" class="error">
+        La altura es obligatoria.
+      </small>
+    </div>
+
+    <!-- Peso -->
+    <div class="form-group">
+      <label for="peso">Peso (kg)</label>
+      <input
+        id="peso"
+        type="number"
+        formControlName="peso"
+        [class.invalid]="f['peso'].invalid && f['peso'].touched"
+        placeholder="Ej. 75"
+      />
+      <small *ngIf="f['peso'].errors?.['required']" class="error">
+        El peso es obligatorio.
+      </small>
+    </div>
+
+    <!-- Stack -->
+    <div class="form-group">
+      <label for="stack">Stack</label>
+      <input
+        id="stack"
+        type="text"
+        formControlName="stack"
+        [class.invalid]="f['stack'].invalid && f['stack'].touched"
+        placeholder="Tus tecnologías"
+      />
+      <small *ngIf="f['stack'].errors?.['required']" class="error">
+        El stack es obligatorio.
+      </small>
+    </div>
+
+    <!-- Botón de envío -->
+    <button type="submit" [disabled]="formularioPersonal.invalid">
+      Enviar
+    </button>
+
+    <!-- Bloque dinámico para el array -->
+     <div *ngIf="submittedData.length" class="submitted-data">
+        <h2>Datos recibidos por el formulario</h2>
+        <ul>
+            <li *ngFor="let s of submittedData">
+                <strong>{{s.label}}:</strong> {{s.value}}
+            </li>
+        </ul>
+     </div>
+
+  </form>
+</div>
