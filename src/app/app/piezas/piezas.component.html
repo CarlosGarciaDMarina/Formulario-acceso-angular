@@ -1,0 +1,23 @@
+<div class="table-container" *ngIf="piezas.length > 0; else loadingOrError">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pieza of piezas">
+        <td>{{ pieza.id }}</td>
+        <td>{{ pieza.nombre }}</td>
+        <td>{{ pieza.estado }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #loadingOrError>
+  <p *ngIf="errorMsg" class="error">{{ errorMsg }}</p>
+  <p *ngIf="!errorMsg" class="loading">Cargando piezas…</p>
+</ng-template>

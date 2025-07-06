@@ -1,5 +1,14 @@
-body{
-    background-color: #555;
-    margin: 0 auto;
+/* styles.css */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
 
+h2 {
+  margin: 1.5rem 0 .5rem;
+  font-weight: 500;
+  color: #2c3e50;
 }
